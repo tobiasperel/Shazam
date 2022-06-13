@@ -41,7 +41,7 @@ while True:
         continue
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
-    text = "Hoy, a las " +current_time+ ", La cancion " + cancion + " del artista " + artista + " esta sonando en aspen."
+    text = "Hoy, a las " +current_time+ ", La cancion " + cancion + " del artista " + artista + " sono en aspen."
     escribirTweet(text)
     cancionVieja = cancion
     artistaViejo = artista

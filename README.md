@@ -20,3 +20,5 @@ Material complementario:
 No Puedo Twitear. Este es un error frecuente se debe a que las credenciales estan solo en read only. Para cambiarlas a read and write [entrar al siguente link](https://stackoverflow.com/questions/70769239/how-to-enable-the-post-permission-on-twitter-developer-app)
 
 [Funciones para hacer con el bot](https://dev.to/twitterdev/a-comprehensive-guide-for-using-the-twitter-api-v2-using-tweepy-in-python-15d9)
+
+[Averiguar URL Radio](https://github.com/andreztz/pyradios)

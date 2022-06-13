@@ -1,45 +1,14 @@
+'''
 #https://github.com/andreztz/pyradios
 from pyradios import RadioBrowser
 rb = RadioBrowser()
 data = rb.search(name="FM ASPEN 102.3", name_exact=True)
 radioEnVivo = data[0]["url"]
 print(radioEnVivo)
+'''
+from doctest import script_from_examples
+import os
+script = "curl --max-time 10 --output output.wav https://us-b4-p-e-qg12-audio.cdn.mdstrm.com/live-audio-aw-bkp/60a2745ff943100826374a70?aid=60106eadf34de307dd720e7b&pid=Ql6BVyib6PaKQY9MrnZ05OCvef5XAFsJ&sid=1CpzakzH9Jo6ihLF88BNMiciY1W0PHDC&uid=bTtY9n2TgNU36rgYafLPghxubV87iVPr&es=us-b4-p-e-qg12-audio.cdn.mdstrm.com&ote=1655238999772&ot=PqOmqK17pEuIIb8a_sA86Q&proto=https&pz=us&cP=128000&awCollectionId=60106eadf34de307dd720e7b&liveId=60a2745ff943100826374a70&propertyName=mediastream-player-aspen-pie"
 
-import pyaudio
-import wave
-
-CHUNK = 1024
-FORMAT = pyaudio.paInt16
-CHANNELS = 1
-RATE = 44100
-RECORD_SECONDS = 10
-WAVE_OUTPUT_FILENAME = "output.wav"
 def grabar():
-    p = pyaudio.PyAudio()
-
-    stream = p.open(format=FORMAT,
-                    channels=CHANNELS,
-                    rate=RATE,
-                    input=True,
-                    frames_per_buffer=CHUNK)
-
-    print("* recording")
-
-    frames = []
-
-    for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
-        data = stream.read(CHUNK)
-        frames.append(data)
-
-    print("* done recording")
-
-    stream.stop_stream()
-    stream.close()
-    p.terminate()
-
-    wf = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
-    wf.setnchannels(CHANNELS)
-    wf.setsampwidth(p.get_sample_size(FORMAT))
-    wf.setframerate(RATE)
-    wf.writeframes(b''.join(frames))
-    wf.close()
+    os.system(script)
