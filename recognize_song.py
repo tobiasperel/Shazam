@@ -1,14 +1,9 @@
 import asyncio
 from shazamio import Shazam
-import tweepy
-from keys import *
 from datetime import datetime
 import time 
 from radio import grabar
-client = tweepy.Client(consumer_key= consumer_key,
-                    consumer_secret=consumer_secret,
-                    access_token=access_token,
-                    access_token_secret=access_token_secret)
+from mandarTweet import escribirTweet
 
 # Replace the text with whatever you want to Tweet about
 
@@ -29,8 +24,6 @@ def averiguarCancion():
     cancion, artista = loop.run_until_complete(main())
     return (cancion, artista)
 
-def escribirTweet(text):
-    client.create_tweet(text=text)
 
 cancionVieja = ""
 artistaViejo = ""
