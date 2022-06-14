@@ -22,3 +22,11 @@ No Puedo Twitear. Este es un error frecuente se debe a que las credenciales esta
 [Funciones para hacer con el bot](https://dev.to/twitterdev/a-comprehensive-guide-for-using-the-twitter-api-v2-using-tweepy-in-python-15d9)
 
 [Averiguar URL Radio](https://github.com/andreztz/pyradios)
+
+---
+
+[spotify con node](https://www.youtube.com/watch?v=BxXsxI0ts0o)
+
+[Documentacion](https://developer.spotify.com/documentation/general/guides/working-with-playlists/#reading-a-playlist)
+
+[Add Items to Playlist](https://developer.spotify.com/documentation/web-api/reference/#/operations/add-tracks-to-playlist)
