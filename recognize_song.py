@@ -4,7 +4,7 @@ from datetime import datetime
 import time 
 from radio import grabar
 from mandarTweet import escribirTweet
-
+from spotify.musica import agregarCancion
 # Replace the text with whatever you want to Tweet about
 
 async def main():
@@ -15,8 +15,8 @@ async def main():
         artista = out["track"]["subtitle"]
     except:
         return ("No se pudo reconocer la cancion", "")
-    print(cancion)  
-    print(artista) 
+    #print(cancion)  
+    #print(artista) 
     return (cancion, artista)
 
 def averiguarCancion(): 
@@ -31,7 +31,7 @@ grabar()
 while True:
     cancion, artista = averiguarCancion()
     if cancion == "No se pudo reconocer la cancion":
-        print("No se pudo reconocer la cancion")
+        #print("No se pudo reconocer la cancion")
         time.sleep(60)
         grabar()
         continue
@@ -39,6 +39,7 @@ while True:
         time.sleep(120)
         grabar()
         continue
+    agregarCancion(cancion, artista)
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
     text = "Hoy, a las " +current_time+ ", La cancion " + cancion + " del artista " + artista + " sono en aspen."
