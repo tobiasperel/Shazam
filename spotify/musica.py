@@ -8,5 +8,8 @@ def agregarCancion(cancion,artista):
     if cancion not in canciones:
         cancionesYArtistas[artista] = cancion
         print(cancionesYArtistas)
-        insertarCancion(cancion,artista)
+        try:
+            insertarCancion(cancion,artista)
+        except Exception as e:
+            print(e)
 

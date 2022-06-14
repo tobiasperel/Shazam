@@ -28,7 +28,6 @@ def pasarTablaADiccionario(tabla = "canciones", relevant=1):
         for i in range(len(row)):
             if i == 0 :
                 continue
-            print(row[i])
             if i == 2:
                 continue
             diccionario[row[2]] = row[i]
