@@ -1,5 +1,6 @@
-from spotify.baseDeDatos import insertarCancion
-cancionesYArtistas = {}
+from spotify.baseDeDatos import insertarCancion, pasarTablaADiccionario
+
+cancionesYArtistas = pasarTablaADiccionario()
 
 def agregarCancion(cancion,artista):
     canciones = list(cancionesYArtistas.values())

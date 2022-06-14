@@ -15,8 +15,8 @@ async def main():
         artista = out["track"]["subtitle"]
     except:
         return ("No se pudo reconocer la cancion", "")
-    print(cancion)  
-    print(artista) 
+    #print(cancion)  
+    #print(artista) 
     return (cancion, artista)
 
 def averiguarCancion(): 
@@ -31,7 +31,7 @@ grabar()
 while True:
     cancion, artista = averiguarCancion()
     if cancion == "No se pudo reconocer la cancion":
-        print("No se pudo reconocer la cancion")
+        #print("No se pudo reconocer la cancion")
         time.sleep(60)
         grabar()
         continue
