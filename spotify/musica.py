@@ -1,6 +1,7 @@
 from spotify.baseDeDatos import insertarCancion, pasarTablaADiccionario
 
 cancionesYArtistas = pasarTablaADiccionario()
+print(cancionesYArtistas)
 
 def agregarCancion(cancion,artista):
     canciones = list(cancionesYArtistas.values())

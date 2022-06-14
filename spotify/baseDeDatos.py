@@ -22,17 +22,20 @@ def insertarCancion(cancion,artista):
 def pasarTablaADiccionario(tabla = "canciones", relevant=1):
     cursor = c
     cursor = cursor.execute(f"SELECT * from {tabla}")
-    names = [description[0] for description in cursor.description]
     diccionario = {}
     for row in cursor:
-        diccionario[row[0]] = list()
+        diccionario[row[2]] = ""
         for i in range(len(row)):
-            if i == 0 or i == 1:
+            if i == 0 :
                 continue
-            diccionario[row[0]].append(row[i])
+            print(row[i])
+            if i == 2:
+                continue
+            diccionario[row[2]] = row[i]
     return(diccionario)
 
 iniciarTabla(c)
 
 #diccionario = pasarTablaADiccionario()
+#print(diccionario)
 #insertarCancion("one","queen")
