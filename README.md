@@ -23,6 +23,8 @@ No Puedo Twitear. Este es un error frecuente se debe a que las credenciales esta
 
 [Averiguar URL Radio](https://github.com/andreztz/pyradios)
 
+[bajar ffmpeg.exe-ffprobe.exe](https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip)
+
 ---
 
 [spotify con node](https://www.youtube.com/watch?v=BxXsxI0ts0o)

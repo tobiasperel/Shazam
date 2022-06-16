@@ -131,3 +131,5 @@ dmypy.json
 .pyre/
 *.exe
 *.wav
+
+node_modules/

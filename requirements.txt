@@ -3,4 +3,4 @@ asyncio
 shazamio
 datetime
 pyradios
-sqlite3
+db-sqlite3

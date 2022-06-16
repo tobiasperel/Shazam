@@ -6,10 +6,16 @@ print(cancionesYArtistas)
 def agregarCancion(cancion,artista):
     canciones = list(cancionesYArtistas.values())
     if cancion not in canciones:
-        cancionesYArtistas[artista] = cancion
+        if artista in cancionesYArtistas.keys():
+            cancionesYArtistas[artista].append(cancion)
+        else:
+            cancionesYArtistas[artista] = list()
+            cancionesYArtistas[artista].append(cancion)
         print(cancionesYArtistas)
         try:
             insertarCancion(cancion,artista)
         except Exception as e:
             print(e)
+
+#agregarCancion("Clocks","Coldplay")
 
