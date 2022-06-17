@@ -1,5 +1,5 @@
 from spotify.baseDeDatos import insertarCancion, pasarTablaADiccionario,estaLaCancion
-
+from spotify.apiSpotify import agregarALaPlaylist
 cancionesYArtistas = pasarTablaADiccionario()
 print(cancionesYArtistas)
 
@@ -11,6 +11,7 @@ def agregarCancion(cancion,artista):
         esta = True
     if esta == False:
         agregarALaBaseDeDatos(cancion,artista)
+        agregarALaPlaylist(cancion,artista)
 
 def agregarALaBaseDeDatos(cancion,artista):
     try:
