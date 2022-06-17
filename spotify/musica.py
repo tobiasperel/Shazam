@@ -1,21 +1,21 @@
-from spotify.baseDeDatos import insertarCancion, pasarTablaADiccionario
+from spotify.baseDeDatos import insertarCancion, pasarTablaADiccionario,estaLaCancion
 
 cancionesYArtistas = pasarTablaADiccionario()
 print(cancionesYArtistas)
 
 def agregarCancion(cancion,artista):
-    canciones = list(cancionesYArtistas.values())
-    if cancion not in canciones:
-        if artista in cancionesYArtistas.keys():
-            cancionesYArtistas[artista].append(cancion)
-        else:
-            cancionesYArtistas[artista] = list()
-            cancionesYArtistas[artista].append(cancion)
-        print(cancionesYArtistas)
-        try:
-            insertarCancion(cancion,artista)
-        except Exception as e:
-            print(e)
+    try:
+        esta = estaLaCancion(cancion ,artista)
+    except Exception as e:
+        print(e)
+        esta = True
+    if esta == False:
+        agregarALaBaseDeDatos(cancion,artista)
 
-#agregarCancion("Clocks","Coldplay")
+def agregarALaBaseDeDatos(cancion,artista):
+    try:
+        insertarCancion(cancion,artista)
+    except Exception as e:
+        print(e)
 
+agregarCancion("Holdg Heart","Genesis")

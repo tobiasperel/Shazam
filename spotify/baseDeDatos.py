@@ -19,7 +19,7 @@ def insertarCancion(cancion,artista):
             cancion,artista)VALUES("{cancion}","{artista}")''')
     conn.commit()
 
-def pasarTablaADiccionario(tabla = "canciones", relevant=1):
+def pasarTablaADiccionario(tabla = "canciones"):
     cursor = c
     cursor = cursor.execute(f"SELECT * from {tabla}")
     diccionario = {}
@@ -33,8 +33,17 @@ def pasarTablaADiccionario(tabla = "canciones", relevant=1):
             diccionario[row[2]] = row[i]
     return(diccionario)
 
+def estaLaCancion(cancion, artista, tabla = "canciones"):
+    cursor = c
+    cursor = cursor.execute(f"SELECT * from {tabla} WHERE cancion = '?' AND artista = '?'".format(cancion,artista))
+    if len(cursor.fetchall()) == 0:
+        return False
+    return True
+
+
 iniciarTabla(c)
+#esta = estaLaCancion("Clocks","Coldplay","canciones")
 
 #diccionario = pasarTablaADiccionario()
 #print(diccionario)
-#insertarCancion("one","queen")
+#insertarCancion("Will you - fgf &%/$#)=#)$=) ? dasdsa ?","queen")
