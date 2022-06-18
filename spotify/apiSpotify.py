@@ -1,11 +1,15 @@
 import requests
 import base64
-from keysSpotify import *
+try:
+    from spotify.keysSpotify import *
+except:
+    from keysSpotify import *
 #https://developer.spotify.com/console/get-search-item/
+
 headers = {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer BQBtiVXki5vEIbYVo6QHXdrCifU0gX_281OwSxoIx5wHiHWZsiY9YfcnavM_G33MnpADEUVTH57fUZ1SoL5gGzlQwjizkkepadK7j8L7R4QlR48WD4zbmTrD4_cFRuFN0qEnHhSSRDO_z2cryuQg2hlnLtGb-9WzedA03Ei2uBiShCE6r0hfyX7rf01G-CE56u066Kmgjf948eIz6RHs4ADLYjg4ITcbP7dTLts85TR_khRueIUcSLlT3w',
+    'Authorization': 'Bearer BQBhBQyqaTQArzQW678Ysyqza9cTtLLNhsaT2wFsgdCQ4Hri14WDbJhIZQLJVgCbsnWezdV3v1PYbAVwCehowXKr8WHxbqHLxgfo9jHpzZEJA9MM5jd5YHM3qaTCBtrR8_Eu0PGl4HtAevxK79ERgYBWB-MDZCGj1Ju7fRkN-VZjr_PjOmeR7NigZ2tiUUeaFCyckQtqhOJG83_omH0eEBeuK-Vj8JGMsbiuO07vUQQP627ODUftQz2-8',
 }
 
 def addItemToAPlaylist(idCancion):
@@ -53,5 +57,5 @@ def renovearToken():
     return data["access_token"]
 
 #agregarALaPlaylist("I cant dance","Genesis")
-newAccessToken=renovearToken()
-print(newAccessToken)
+#newAccessToken=renovearToken()
+#print(newAccessToken)
