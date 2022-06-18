@@ -1,10 +1,16 @@
 import requests
-
+import base64
+#https://developer.spotify.com/console/get-search-item/
 headers = {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer BQANybyxb26om0lgNMK2A4ERWQigJhWGoYZGNV23-iZKF1ZRY9PAgPYLgBx5RV7DclSa0tXl6wXyglwkeA_885s_HZMPoPL6wsWzSVqoCrXIWML8jKNTEWEtSV6wEG0hEH4mn5-XoLJrkk9Y4DSm6CCx7lUw7e8c5gU-oNKOs9rPMk-4uRsIq_IsnUYDFdW3oWY4GPL_DV0DcSAtIGRCT8sSUfU7uRItAdaW_V7i4iGAndpRx7mfxsECag',
+    'Authorization': 'Bearer BQBtiVXki5vEIbYVo6QHXdrCifU0gX_281OwSxoIx5wHiHWZsiY9YfcnavM_G33MnpADEUVTH57fUZ1SoL5gGzlQwjizkkepadK7j8L7R4QlR48WD4zbmTrD4_cFRuFN0qEnHhSSRDO_z2cryuQg2hlnLtGb-9WzedA03Ei2uBiShCE6r0hfyX7rf01G-CE56u066Kmgjf948eIz6RHs4ADLYjg4ITcbP7dTLts85TR_khRueIUcSLlT3w',
 }
+
+
+client_id = 'ad15e2f7f6824d4881a530fbdbd1d130'
+client_secret = 'b90edd733aed4948b45c51a41e6dabed'
+refresh_token = 'AQANvyrQjZNo3MvCWB1w0WTydvwP2r87e8XGDrRMYdsrhCBKFWKrlCpArk293X3rLFdIP0nAXDm2WznOBhbr9hSl79PpWo9odBprAi29mMnSqgs5iKECeZb0kOs2c3X0QWU'
 
 def addItemToAPlaylist(idCancion):
 
@@ -40,4 +46,17 @@ def agregarALaPlaylist(cancion,artista):
         respuesta = addItemToAPlaylist(idCancion)
         print(respuesta)
 
+
+def renovearToken():
+    
+    url = 'https://accounts.spotify.com/api/token'
+    headers = {'Authorization': 'Basic ' + base64.b64encode(bytes(client_id + ':' + client_secret, 'utf-8')).decode('utf-8')}
+    form = {'grant_type': 'refresh_token', 'refresh_token': refresh_token}
+
+    response = requests.post(url, data=form, headers=headers)
+    data = response.json()
+    return data["access_token"]
+
 #agregarALaPlaylist("I cant dance","Genesis")
+newAccessToken=renovearToken()
+print(newAccessToken)
