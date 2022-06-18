@@ -9,11 +9,11 @@ except:
 headers = {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer BQBhBQyqaTQArzQW678Ysyqza9cTtLLNhsaT2wFsgdCQ4Hri14WDbJhIZQLJVgCbsnWezdV3v1PYbAVwCehowXKr8WHxbqHLxgfo9jHpzZEJA9MM5jd5YHM3qaTCBtrR8_Eu0PGl4HtAevxK79ERgYBWB-MDZCGj1Ju7fRkN-VZjr_PjOmeR7NigZ2tiUUeaFCyckQtqhOJG83_omH0eEBeuK-Vj8JGMsbiuO07vUQQP627ODUftQz2-8',
+    'Authorization': 'Bearer' + ' ' + bareerToken,
 }
 
 def addItemToAPlaylist(idCancion):
-
+    
     params = {
         'uris': 'spotify:track:' + idCancion,
     }
@@ -27,9 +27,13 @@ def obtenerId(cancion,artistaBDD):
         'q': cancion, 
         'type': 'track',
     }
-    response = requests.get('https://api.spotify.com/v1/search', params=params, headers=headers)
-    data = response.json()
-    listaDeArtitstas = data["tracks"]["items"]
+    try:
+        response = requests.get('https://api.spotify.com/v1/search', params=params, headers=headers)
+        data = response.json()
+        listaDeArtitstas = data["tracks"]["items"]
+    except:
+        headers["Authorization"] = 'Bearer' + ' ' + renovearToken()
+        return -1
     idCancion = 0
     for artistaYMuchasCosas in listaDeArtitstas:
         artistaSpotify = artistaYMuchasCosas["artists"][0]["name"]
@@ -39,9 +43,10 @@ def obtenerId(cancion,artistaBDD):
             return idCancion
     return idCancion
 
-
 def agregarALaPlaylist(cancion,artista):
     idCancion= obtenerId(cancion,artista)
+    if idCancion == -1:
+        idCancion= obtenerId(cancion,artista)
     if idCancion != 0:
         respuesta = addItemToAPlaylist(idCancion)
         print(respuesta)
@@ -49,13 +54,13 @@ def agregarALaPlaylist(cancion,artista):
 def renovearToken():
     
     url = 'https://accounts.spotify.com/api/token'
-    headers = {'Authorization': 'Basic ' + base64.b64encode(bytes(client_id + ':' + client_secret, 'utf-8')).decode('utf-8')}
+    headers1 = {'Authorization': 'Basic ' + base64.b64encode(bytes(client_id + ':' + client_secret, 'utf-8')).decode('utf-8')}
     form = {'grant_type': 'refresh_token', 'refresh_token': refresh_token}
 
-    response = requests.post(url, data=form, headers=headers)
+    response = requests.post(url, data=form, headers=headers1)
     data = response.json()
     return data["access_token"]
 
-#agregarALaPlaylist("I cant dance","Genesis")
+#agregarALaPlaylist("Paradise","Coldplay")
 #newAccessToken=renovearToken()
-#print(newAccessToken)
+#print("Bearer", newAccessToken)
