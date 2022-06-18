@@ -1,16 +1,12 @@
 import requests
 import base64
+from keysSpotify import *
 #https://developer.spotify.com/console/get-search-item/
 headers = {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
     'Authorization': 'Bearer BQBtiVXki5vEIbYVo6QHXdrCifU0gX_281OwSxoIx5wHiHWZsiY9YfcnavM_G33MnpADEUVTH57fUZ1SoL5gGzlQwjizkkepadK7j8L7R4QlR48WD4zbmTrD4_cFRuFN0qEnHhSSRDO_z2cryuQg2hlnLtGb-9WzedA03Ei2uBiShCE6r0hfyX7rf01G-CE56u066Kmgjf948eIz6RHs4ADLYjg4ITcbP7dTLts85TR_khRueIUcSLlT3w',
 }
-
-
-client_id = 'ad15e2f7f6824d4881a530fbdbd1d130'
-client_secret = 'b90edd733aed4948b45c51a41e6dabed'
-refresh_token = 'AQANvyrQjZNo3MvCWB1w0WTydvwP2r87e8XGDrRMYdsrhCBKFWKrlCpArk293X3rLFdIP0nAXDm2WznOBhbr9hSl79PpWo9odBprAi29mMnSqgs5iKECeZb0kOs2c3X0QWU'
 
 def addItemToAPlaylist(idCancion):
 
@@ -45,7 +41,6 @@ def agregarALaPlaylist(cancion,artista):
     if idCancion != 0:
         respuesta = addItemToAPlaylist(idCancion)
         print(respuesta)
-
 
 def renovearToken():
     
