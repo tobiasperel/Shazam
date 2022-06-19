@@ -4,7 +4,6 @@ try:
     from spotify.keysSpotify import *
 except:
     from keysSpotify import *
-#https://developer.spotify.com/console/get-search-item/
 
 headers = {
     'Accept': 'application/json',
@@ -45,8 +44,10 @@ def obtenerId(cancion,artistaBDD):
 
 def agregarALaPlaylist(cancion,artista):
     idCancion= obtenerId(cancion,artista)
+    print(idCancion)
     if idCancion == -1:
         idCancion= obtenerId(cancion,artista)
+    print(idCancion)
     if idCancion != 0:
         respuesta = addItemToAPlaylist(idCancion)
         print(respuesta)
