@@ -15,16 +15,6 @@ def iniciarTabla(c):
                 );''')
     conn.commit()
 
-def migrarTabla(tabla):
-    cursor = c
-    cursor = cursor.execute(f"SELECT * from {tabla}")
-    #print(cursor.fetchall())
-    for row in cursor.fetchall():
-        print(row)
-        if estaLaCancion(row[1],row[2]):
-            continue
-        insertarCancion(row[1],row[2])
-
 def insertarCancion(cancion,artista,cantidadDeVecesRepoducida = 1):
     c.execute(f'''INSERT INTO cancionesConReproducciones (
             cancion,artista,cantidadDeVecesRepoducida)VALUES("{cancion}","{artista}","{cantidadDeVecesRepoducida}")''')
@@ -51,28 +41,23 @@ def pasarTablaADiccionario(tabla = "cancionesConReproducciones"):
 
 def estaLaCancion(cancion, artista, tabla = "cancionesConReproducciones"):
     cursor = c
-    cursor = cursor.execute(f"SELECT * from {tabla} WHERE cancion = '?' AND artista = '?'".format(cancion,artista))
+    cursor = cursor.execute(f'''SELECT * from {tabla} WHERE cancion = "{cancion}"  AND artista = "{artista}" '''.format(cancion,artista))
     if len(cursor.fetchall()) == 0:
         return False
     return True
 
 def agregarReproducciones(cancion,artista, tabla = "cancionesConReproducciones"):
     cursor = c
-    cursor = cursor.execute(f"SELECT * from {tabla} WHERE cancion = '?' AND artista = '?'".format(cancion,artista))
-    cantidadDeVecesRepoducida = cursor.fetchall()
-    print(cantidadDeVecesRepoducida)
-    #cursor = cursor.execute("UPDATE cancionesConReproducciones SET cantidadDeVecesRepoducida = {cantidadDeVecesRepoducida} + 1 where cancion = '{cancion}' AND artista = '{artista}'".format(cantidadDeVecesRepoducida = cantidadDeVecesRepoducida,cancion = cancion,artista = artista))
-    #conn.commit()
+    cursor = cursor.execute(f'''SELECT * from {tabla} WHERE cancion = "{cancion}"  AND artista = "{artista}" '''.format(cancion,artista))
+    cantidadDeVecesRepoducida = cursor.fetchall()[0][3]
+    cursor = cursor.execute("UPDATE cancionesConReproducciones SET cantidadDeVecesRepoducida = {cantidadDeVecesRepoducida} + 1 where cancion = '{cancion}' AND artista = '{artista}'".format(cantidadDeVecesRepoducida = cantidadDeVecesRepoducida,cancion = cancion,artista = artista))
+    conn.commit()
 
 
-'''
-cursor = c
-cursor = cursor.execute(f"DROP TABLE cancionesConReproducciones")
-''' 
 iniciarTabla(c)
-#migrarTabla("canciones")
+
 #esta = estaLaCancion("Clocks","Coldplay","canciones")
-print(estaLaCancion("Sometimes","Erasure"))
+#print(estaLaCancion("Sometimes","Erasure"))
 #diccionario = pasarTablaADiccionario()
 #print(diccionario)
 #insertarCancion("Will you - fgf &%/$#)=#)$=) ? dasdsa ?","queen")
