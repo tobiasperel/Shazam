@@ -32,7 +32,7 @@ def agregarReproducciones(cancion,artista, tabla = "cancionesConReproducciones")
     cursor = c
     cursor = cursor.execute(f'''SELECT * from {tabla} WHERE cancion = "{cancion}"  AND artista = "{artista}" '''.format(cancion,artista))
     cantidadDeVecesRepoducida = cursor.fetchall()[0][3]
-    cursor = cursor.execute("UPDATE cancionesConReproducciones SET cantidadDeVecesRepoducida = {cantidadDeVecesRepoducida} + 1 where cancion = '{cancion}' AND artista = '{artista}'".format(cantidadDeVecesRepoducida = cantidadDeVecesRepoducida,cancion = cancion,artista = artista))
+    cursor = cursor.execute('''UPDATE cancionesConReproducciones SET cantidadDeVecesRepoducida = "{cantidadDeVecesRepoducida}" + 1 where cancion = "{cancion}" AND artista = "{artista}" ''' .format(cantidadDeVecesRepoducida = cantidadDeVecesRepoducida,cancion = cancion,artista = artista))
     conn.commit()
 
 def masReproducidas(tabla = "cancionesConReproducciones"):
