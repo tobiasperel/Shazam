@@ -1,4 +1,5 @@
 import sqlite3
+
 try:
     conn = sqlite3.connect('spotify/database.db')
 except:
@@ -6,44 +7,39 @@ except:
 c = conn.cursor()
 
 def iniciarTabla(c):
-    c.execute('''CREATE TABLE IF NOT EXISTS "canciones" 
+    c.execute('''CREATE TABLE IF NOT EXISTS "cancionesConReproducciones" 
                 ("ID"	INTEGER NOT NULL,
                 "cancion"	TEXT,
                 "artista"	TEXT,
+                "cantidadDeVecesRepoducida"	INTEGER,
                 PRIMARY KEY("ID" AUTOINCREMENT)
                 );''')
     conn.commit()
 
-def insertarCancion(cancion,artista):
-    c.execute(f'''INSERT INTO canciones (
-            cancion,artista)VALUES("{cancion}","{artista}")''')
+def insertarCancion(cancion,artista,cantidadDeVecesRepoducida = 1):
+    c.execute(f'''INSERT INTO cancionesConReproducciones (
+            cancion,artista,cantidadDeVecesRepoducida)VALUES("{cancion}","{artista}","{cantidadDeVecesRepoducida}")''')
     conn.commit()
 
-def pasarTablaADiccionario(tabla = "canciones"):
+def estaLaCancion(cancion, artista, tabla = "cancionesConReproducciones"):
     cursor = c
-    cursor = cursor.execute(f"SELECT * from {tabla}")
-    diccionario = {}
-    for row in cursor:
-        diccionario[row[2]] = ""
-        for i in range(len(row)):
-            if i == 0 :
-                continue
-            if i == 2:
-                continue
-            diccionario[row[2]] = row[i]
-    return(diccionario)
-
-def estaLaCancion(cancion, artista, tabla = "canciones"):
-    cursor = c
-    cursor = cursor.execute(f"SELECT * from {tabla} WHERE cancion = '?' AND artista = '?'".format(cancion,artista))
+    cursor = cursor.execute(f'''SELECT * from {tabla} WHERE cancion = "{cancion}"  AND artista = "{artista}" '''.format(cancion,artista))
     if len(cursor.fetchall()) == 0:
         return False
     return True
 
+def agregarReproducciones(cancion,artista, tabla = "cancionesConReproducciones"):
+    cursor = c
+    cursor = cursor.execute(f'''SELECT * from {tabla} WHERE cancion = "{cancion}"  AND artista = "{artista}" '''.format(cancion,artista))
+    cantidadDeVecesRepoducida = cursor.fetchall()[0][3]
+    cursor = cursor.execute("UPDATE cancionesConReproducciones SET cantidadDeVecesRepoducida = {cantidadDeVecesRepoducida} + 1 where cancion = '{cancion}' AND artista = '{artista}'".format(cantidadDeVecesRepoducida = cantidadDeVecesRepoducida,cancion = cancion,artista = artista))
+    conn.commit()
+
 
 iniciarTabla(c)
-#esta = estaLaCancion("Clocks","Coldplay","canciones")
 
+#esta = estaLaCancion("Clocks","Coldplay","canciones")
+#print(estaLaCancion("Sometimes","Erasure"))
 #diccionario = pasarTablaADiccionario()
 #print(diccionario)
 #insertarCancion("Will you - fgf &%/$#)=#)$=) ? dasdsa ?","queen")
