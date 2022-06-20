@@ -12,6 +12,9 @@ def agregarCancion(cancion,artista):
     if esta == False:
         agregarALaBaseDeDatos(cancion,artista)
         agregarALaPlaylist(cancion,artista)
+    else:
+        print("Ya esta la cancion")
+        
     
 
 def agregarALaBaseDeDatos(cancion,artista):

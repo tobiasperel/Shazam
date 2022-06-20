@@ -35,13 +35,18 @@ def pasarTablaADiccionario(tabla = "cancionesConReproducciones"):
     cursor = cursor.execute(f"SELECT * from {tabla}")
     diccionario = {}
     for row in cursor:
-        diccionario[row[2]] = ""
+        diccionario[row[2]] = list()
         for i in range(len(row)):
+            print(row[i])
             if i == 0 :
                 continue
             if i == 2:
                 continue
-            diccionario[row[2]] = row[i]
+            if i == 3:
+                continue
+            diccionario[row[2]].append(row[1])
+            diccionario[row[2]].append(row[3])
+            continue
     return(diccionario)
 
 def estaLaCancion(cancion, artista, tabla = "cancionesConReproducciones"):
@@ -51,6 +56,15 @@ def estaLaCancion(cancion, artista, tabla = "cancionesConReproducciones"):
         return False
     return True
 
+def agregarReproducciones(cancion,artista, tabla = "cancionesConReproducciones"):
+    cursor = c
+    cursor = cursor.execute(f"SELECT * from {tabla} WHERE cancion = '?' AND artista = '?'".format(cancion,artista))
+    cantidadDeVecesRepoducida = cursor.fetchall()
+    print(cantidadDeVecesRepoducida)
+    #cursor = cursor.execute("UPDATE cancionesConReproducciones SET cantidadDeVecesRepoducida = {cantidadDeVecesRepoducida} + 1 where cancion = '{cancion}' AND artista = '{artista}'".format(cantidadDeVecesRepoducida = cantidadDeVecesRepoducida,cancion = cancion,artista = artista))
+    #conn.commit()
+
+
 '''
 cursor = c
 cursor = cursor.execute(f"DROP TABLE cancionesConReproducciones")
@@ -58,7 +72,7 @@ cursor = cursor.execute(f"DROP TABLE cancionesConReproducciones")
 iniciarTabla(c)
 #migrarTabla("canciones")
 #esta = estaLaCancion("Clocks","Coldplay","canciones")
-
+print(estaLaCancion("Sometimes","Erasure"))
 #diccionario = pasarTablaADiccionario()
 #print(diccionario)
 #insertarCancion("Will you - fgf &%/$#)=#)$=) ? dasdsa ?","queen")
