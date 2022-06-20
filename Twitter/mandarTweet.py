@@ -1,5 +1,5 @@
 import tweepy
-from Twitter.keys import *
+from Twitter.keysTwitter import *
 client = tweepy.Client(consumer_key= consumer_key,
                     consumer_secret=consumer_secret,
                     access_token=access_token,

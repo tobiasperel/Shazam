@@ -11,7 +11,7 @@ Entrar al siguiente [link](https://github.com/BtbN/FFmpeg-Builds/releases/downlo
 
 4- Entrar a Twitter devoloper y generar una cuenta de developer
 
-5- Poner las keys en keysSpotify.py y keys.py de twitter
+5- Poner las keys en keysSpotify.py y keysTwitter.py de twitter
 
 ---
 
