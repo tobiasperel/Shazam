@@ -1,10 +1,11 @@
+import errno
 from Twitter.mandarTweet import escribirTweet
 from Twitter.armarTwit import armarTwit
 from spotify.musica import agregarCancion
 from shazam.reconocerCancionShazam import averiguarCancion
 from shazam.radio import grabar
-import time
-
+import time 
+from Telegram.mandarTelegram import send_message
 def main():
     cancionVieja = ""
     artistaViejo = ""
@@ -21,9 +22,16 @@ def main():
             continue
         agregarCancion(cancion, artista)
         text = armarTwit(cancion, artista)
-        escribirTweet(text)
+        try:
+            escribirTweet(text)
+        except:
+            escribirTweet(text)
         cancionVieja = cancion
         artistaViejo = artista
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except:
+        send_message()
+        main()
