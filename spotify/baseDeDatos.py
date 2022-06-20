@@ -35,11 +35,14 @@ def agregarReproducciones(cancion,artista, tabla = "cancionesConReproducciones")
     cursor = cursor.execute("UPDATE cancionesConReproducciones SET cantidadDeVecesRepoducida = {cantidadDeVecesRepoducida} + 1 where cancion = '{cancion}' AND artista = '{artista}'".format(cantidadDeVecesRepoducida = cantidadDeVecesRepoducida,cancion = cancion,artista = artista))
     conn.commit()
 
+def masReproducidas(tabla = "cancionesConReproducciones"):
+    cursor = c
+    cursor = cursor.execute(f'''SELECT * from {tabla} ORDER BY cantidadDeVecesRepoducida DESC''')
+    return cursor.fetchall()
 
 iniciarTabla(c)
 
 #esta = estaLaCancion("Clocks","Coldplay","canciones")
-#print(estaLaCancion("Sometimes","Erasure"))
-#diccionario = pasarTablaADiccionario()
-#print(diccionario)
+#print(estaLaCancion("Upside Down","Jack Johnson"))
+#print(masReproducidas())
 #insertarCancion("Will you - fgf &%/$#)=#)$=) ? dasdsa ?","queen")
