@@ -1,4 +1,5 @@
 import sqlite3
+
 try:
     conn = sqlite3.connect('spotify/database.db')
 except:
@@ -19,25 +20,6 @@ def insertarCancion(cancion,artista,cantidadDeVecesRepoducida = 1):
     c.execute(f'''INSERT INTO cancionesConReproducciones (
             cancion,artista,cantidadDeVecesRepoducida)VALUES("{cancion}","{artista}","{cantidadDeVecesRepoducida}")''')
     conn.commit()
-
-def pasarTablaADiccionario(tabla = "cancionesConReproducciones"):
-    cursor = c
-    cursor = cursor.execute(f"SELECT * from {tabla}")
-    diccionario = {}
-    for row in cursor:
-        diccionario[row[2]] = list()
-        for i in range(len(row)):
-            print(row[i])
-            if i == 0 :
-                continue
-            if i == 2:
-                continue
-            if i == 3:
-                continue
-            diccionario[row[2]].append(row[1])
-            diccionario[row[2]].append(row[3])
-            continue
-    return(diccionario)
 
 def estaLaCancion(cancion, artista, tabla = "cancionesConReproducciones"):
     cursor = c

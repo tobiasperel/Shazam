@@ -1,7 +1,6 @@
 from spotify.baseDeDatos import insertarCancion, pasarTablaADiccionario,estaLaCancion,agregarReproducciones
 from spotify.apiSpotify import agregarALaPlaylist
-cancionesYArtistas = pasarTablaADiccionario()
-print(cancionesYArtistas)
+
 
 def agregarCancion(cancion,artista):
     esta = estaLaCancion(cancion ,artista)
