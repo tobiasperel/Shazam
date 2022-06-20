@@ -26,7 +26,4 @@ def main():
         artistaViejo = artista
 
 if __name__ == "__main__":
-    try:
-        main()
-    except KeyboardInterrupt:
-        print("\n\nSaliendo...")
+    main()

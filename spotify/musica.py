@@ -13,5 +13,4 @@ def agregarCancion(cancion,artista):
 def agregarALaBaseDeDatos(cancion,artista):
     insertarCancion(cancion,artista)
 
-
 #agregarCancion("Holdg Heart","Genesis")

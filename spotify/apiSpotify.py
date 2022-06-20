@@ -36,7 +36,7 @@ def obtenerId(cancion,artistaBDD):
     idCancion = 0
     for artistaYMuchasCosas in listaDeArtitstas:
         artistaSpotify = artistaYMuchasCosas["artists"][0]["name"]
-        if artistaSpotify == artistaBDD:
+        if artistaSpotify.lower() == artistaBDD.lower():
             idCancion = artistaYMuchasCosas["id"]
             print(cancion , artistaSpotify)
             return idCancion
