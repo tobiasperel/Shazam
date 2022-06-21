@@ -1,4 +1,3 @@
-import errno
 from Twitter.mandarTweet import escribirTweet
 from Twitter.armarTwit import armarTwit
 from spotify.musica import agregarCancion
