@@ -6,6 +6,7 @@ from shazam.reconocerCancionShazam import averiguarCancion
 from shazam.radio import grabar
 import time 
 from Telegram.mandarTelegram import send_message
+
 def main():
     cancionVieja = ""
     artistaViejo = ""
@@ -34,4 +35,3 @@ if __name__ == "__main__":
         main()
     except:
         send_message()
-        main()
