@@ -4,4 +4,4 @@ shazamio
 datetime
 pyradios
 db-sqlite3
-telegram
+python-telegram-bot

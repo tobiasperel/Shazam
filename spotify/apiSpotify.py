@@ -1,4 +1,5 @@
 import requests
+from Telegram.mandarTelegram import send_message
 import base64
 try:
     from spotify.keysSpotify import *
@@ -48,6 +49,9 @@ def agregarALaPlaylist(cancion,artista):
     if idCancion == -1:
         idCancion= obtenerId(cancion,artista)
     print(idCancion)
+    if idCancion == 0:
+        todo = cancion + " " + artista
+        send_message(todo)
     if idCancion != 0:
         respuesta = addItemToAPlaylist(idCancion)
         print(respuesta)
