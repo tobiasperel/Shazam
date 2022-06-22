@@ -29,7 +29,6 @@ def main():
             cancionVieja = cancion
             artistaViejo = artista
         except:
-            send_message()
             continue
     
 if __name__ == "__main__":

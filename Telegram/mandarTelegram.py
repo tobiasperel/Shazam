@@ -6,9 +6,7 @@ from Telegram.keysTelegram import *
 bot = telegram.Bot(token=token)
 
 def send_message(text= "Se corto el programa",chat_id = chat_id):
-    try:
-        bot.send_message(chat_id, text)
-    except:
-        send_message()
+    bot.send_message(chat_id, text)
+    
 
 #send_message(chat_id,'hola chino')
