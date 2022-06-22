@@ -28,8 +28,8 @@ def main():
             escribirTweet(text)
             cancionVieja = cancion
             artistaViejo = artista
-        except Exception as e :
-            send_message(e)
+        except:
+            send_message()
             continue
     
 if __name__ == "__main__":
