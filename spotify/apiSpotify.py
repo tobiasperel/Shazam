@@ -41,6 +41,7 @@ def obtenerId(cancion,artistaBDD):
             idCancion = artistaYMuchasCosas["id"]
             print(cancion , artistaSpotify)
             return idCancion
+    send_message(cancion + " " + artistaBDD)
     return idCancion
 
 def agregarALaPlaylist(cancion,artista):
@@ -49,9 +50,6 @@ def agregarALaPlaylist(cancion,artista):
     if idCancion == -1:
         idCancion= obtenerId(cancion,artista)
     print(idCancion)
-    if idCancion == 0:
-        todo = cancion + " " + artista
-        send_message(todo)
     if idCancion != 0:
         respuesta = addItemToAPlaylist(idCancion)
         print(respuesta)

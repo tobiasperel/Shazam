@@ -1,3 +1,4 @@
+from pandas import ExcelFile
 from Twitter.mandarTweet import escribirTweet
 from Twitter.armarTwit import armarTwit
 from spotify.musica import agregarCancion
@@ -10,27 +11,26 @@ def main():
     cancionVieja = ""
     artistaViejo = ""
     grabar()
+    
     while True:
-        cancion, artista = averiguarCancion()
-        if cancion == "No se pudo reconocer la cancion":
-            time.sleep(60)
-            grabar()
-            continue
-        if cancion == cancionVieja and artista == artistaViejo:
-            time.sleep(120)
-            grabar()
-            continue
-        agregarCancion(cancion, artista)
-        text = armarTwit(cancion, artista)
         try:
+            cancion, artista = averiguarCancion()
+            if cancion == "No se pudo reconocer la cancion":
+                time.sleep(60)
+                grabar()
+                continue
+            if cancion == cancionVieja and artista == artistaViejo:
+                time.sleep(120)
+                grabar()
+                continue
+            agregarCancion(cancion, artista)
+            text = armarTwit(cancion, artista)
             escribirTweet(text)
-        except:
-            escribirTweet(text)
-        cancionVieja = cancion
-        artistaViejo = artista
-
+            cancionVieja = cancion
+            artistaViejo = artista
+        except Exception as e :
+            send_message(e)
+            continue
+    
 if __name__ == "__main__":
-    try:
-        main()
-    except:
-        send_message()
+    main()
