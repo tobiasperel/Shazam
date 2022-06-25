@@ -15,6 +15,7 @@ def main():
     while True:
         try:
             cancion, artista = averiguarCancion()
+            print(cancion)
             if cancion == "No se pudo reconocer la cancion":
                 time.sleep(60)
                 grabar()
