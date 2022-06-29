@@ -7,7 +7,7 @@ pip install -r requirements.txt
 
 Entrar al siguiente [link](https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip)
 
-3- Colocar el ffmpeg.exe y ffprobe.exe en la carpeta shazam.
+3- Colocar el ffmpeg.exe y ffprobe.exe en la carpeta shazam (solo si se usa en windows).
 
 4- Entrar a Twitter devoloper y generar una cuenta de developer
 
@@ -24,10 +24,6 @@ No Puedo Twitear. Este es un error frecuente se debe a que las credenciales esta
 [Averiguar URL Radio](https://github.com/andreztz/pyradios)
 
 [bajar ffmpeg.exe-ffprobe.exe](https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip)
-
----
-
-[spotify con node](https://www.youtube.com/watch?v=BxXsxI0ts0o)
 
 [Documentacion](https://developer.spotify.com/documentation/general/guides/working-with-playlists/#reading-a-playlist)
 
