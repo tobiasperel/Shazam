@@ -16,11 +16,11 @@ def main():
         try:
             cancion, artista = averiguarCancion()
             if cancion == "No se pudo reconocer la cancion":
-                time.sleep(60)
+                time.sleep(30)
                 grabar()
                 continue
             if cancion == cancionVieja and artista == artistaViejo:
-                time.sleep(120)
+                time.sleep(60)
                 grabar()
                 continue
             agregarCancion(cancion, artista)
