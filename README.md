@@ -3,7 +3,7 @@
 ```bash 
 pip install -r requirements.txt
 ```
-2- Instalar ffmpeg y ffprobe:
+2- Instalar ffmpeg y ffprobe(solo si se usa en windows):
 
 Entrar al siguiente [link](https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip)
 
