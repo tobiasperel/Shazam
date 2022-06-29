@@ -6,3 +6,6 @@ pyradios
 db-sqlite3
 python-telegram-bot
 pandas
+ffmpeg-python
+ffprobe
+ffprobe-python
