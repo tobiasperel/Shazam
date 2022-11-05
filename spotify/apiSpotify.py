@@ -1,5 +1,5 @@
 import requests
-from Telegram.mandarTelegram import send_message
+#from Telegram.mandarTelegram import send_message
 import base64
 try:
     from spotify.keysSpotify import *
@@ -41,7 +41,7 @@ def obtenerId(cancion,artistaBDD):
             idCancion = artistaYMuchasCosas["id"]
             print(cancion , artistaSpotify)
             return idCancion
-    send_message(cancion + " " + artistaBDD)
+    #send_message(cancion + " " + artistaBDD)
     return idCancion
 
 def agregarALaPlaylist(cancion,artista):

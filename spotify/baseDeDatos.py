@@ -40,6 +40,11 @@ def masReproducidas(tabla = "cancionesConReproducciones"):
     cursor = cursor.execute(f'''SELECT * from {tabla} ORDER BY cantidadDeVecesRepoducida DESC''')
     return cursor.fetchall()
 
+def obtenerCancionesYartista(idMinimo,tabla = "cancionesConReproducciones"):
+    cursor = c
+    cursor = cursor.execute(f'''SELECT cancion,artista from {tabla} where {idMinimo} <= ID''')
+    return cursor.fetchall()
+
 iniciarTabla(c)
 
 #esta = estaLaCancion("Clocks","Coldplay","canciones")
